@@ -1,0 +1,28 @@
+.fold-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.fold-controls button {
+  min-width: 110px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #6b4226;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.fold-controls button:hover {
+  background-color: #8a5a34;
+  transform: translateY(-1px);
+}
+
+.fold-controls button:active {
+  transform: translateY(0);
+}

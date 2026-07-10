@@ -1,0 +1,28 @@
+.home-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin: 0 0 12px 0;
+}
+
+.home-subtitle {
+  font-size: 16px;
+  color: #6b6b6b;
+  margin: 0 0 40px 0;
+}
+
+/* auto-fit + minmax lets cards wrap automatically based on screen width,
+   without any manual media queries. */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  text-align: left;
+}

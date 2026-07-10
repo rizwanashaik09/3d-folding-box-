@@ -1,0 +1,45 @@
+ .template-card {  
+  background-color: #ffffff;  
+  border-radius: 12px;  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);  
+  padding: 24px;  
+  display: flex;  
+  flex-direction: column;  
+  gap: 10px;  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;  
+}  
+  
+.template-card:hover {  
+  transform: translateY(-4px);  
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);  
+}  
+  
+.template-card-name {  
+  font-size: 20px;  
+  font-weight: 600;  
+  color: #2b2b2b;  
+  margin: 0;  
+}  
+  
+.template-card-description {  
+  font-size: 14px;  
+  color: #6b6b6b;  
+  margin: 0;  
+  flex-grow: 1; /* keeps buttons aligned even if descriptions differ in length */  
+}  
+  
+.template-card-button {  
+  align-self: flex-start;  
+  padding: 10px 20px;  
+  font-size: 14px;  
+  font-weight: 500;  
+  color: #ffffff;  
+  background-color: #6b4226; /* same brown as FoldControls buttons */  
+  border-radius: 8px;  
+  text-decoration: none;  
+  transition: background-color 0.2s ease;  
+}  
+  
+.template-card-button:hover {  
+  background-color: #8a5a34;  
+}
