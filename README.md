@@ -1,16 +1,50 @@
-# React + Vite
+# 3D Folding Box
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web app that folds flat 2D cardboard templates into animated 3D boxes, built to learn and demonstrate React Three Fiber, hinge-based 3D animation, and component architecture.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 4 box templates, each with a genuinely different fold mechanism:
+  - **Pizza Box / Shipping Box** — 4-flap tuck-top closure
+  - **Shoe Box** — gable roof with pentagon-shaped ends
+  - **Gift Box** — envelope-style pillow box with peaked flaps
+- Hover-to-fold interaction: hovering the box folds it, moving away unfolds it
+- Auto-rotating camera with manual drag-to-rotate (via OrbitControls)
+- Reset button to snap back to the flat template instantly
+- Gentle "floating" lift animation while the box is open
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React + Vite
+- React Three Fiber (`@react-three/fiber`)
+- Three.js
+- `@react-three/drei` (OrbitControls only)
+- React Router
+- Plain CSS — no UI/animation libraries
 
-## Expanding the ESLint configuration
+## How the folding works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Each box template is defined as plain data in `src/data/templates.js`: a list of panels, each with a hinge position, hinge axis, and target fold angle. Panels are rendered as nested Three.js groups — an outer `<group>` acts as the hinge pivot, and the panel mesh sits offset inside it, so rotating the group swings the panel like a real hinge. Folding is driven by a single animated number (`foldStage`) via `useFrame`, which each panel maps to its own 0–1 fold progress based on which "stage" it belongs to (sides → front/back → lid, etc).
+
+## Running locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Project Structure
+
+```
+src/
+├── data/templates.js       # Box definitions: panels, hinges, fold angles
+├── components/
+│   ├── Panel.jsx            # Single hinged cardboard panel
+│   ├── BoxModel.jsx         # Assembles panels, owns fold animation state
+│   ├── BoxScene.jsx         # Canvas, camera, lighting, OrbitControls
+│   └── FoldControls.jsx     # Reset button
+├── hooks/useFoldAnimation.js # Drives the fold animation over time
+└── pages/
+    ├── HomePage.jsx          # Template gallery
+    └── BoxPage.jsx           # 3D view for a selected template
+```
