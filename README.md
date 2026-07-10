@@ -3,7 +3,7 @@
 An interactive web app that folds flat 2D cardboard templates into animated 3D boxes, built to learn and demonstrate React Three Fiber, hinge-based 3D animation, and component architecture.
 ## Live Demo
 
-3d-folding-box.vercel.app
+https://3d-folding-box.vercel.app
 
 ## Features
 
